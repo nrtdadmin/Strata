@@ -393,7 +393,7 @@ function renderConvCache(c) {
   const disk = c.file_budget_mib ? c.file_budget_mib * 1048576 : 0;
   $("cc-disk-row").hidden = !disk;
   if (disk) {
-    $("cc-disk-text").textContent = `${gb(c.file_bytes || 0)} / ${gb(disk)} GB, ${fmt(c.file_count || 0)} spilled`;
+    $("cc-disk-text").textContent = `${gb(c.file_bytes || 0)} / ${gb(disk)} GB, ${fmt(c.file_count || 0)} spilled, ${fmt(c.disk_reads || 0)} restored`;
     $("cc-disk-bar").style.width = pct(c.file_bytes || 0, disk);
   }
   $("cc-sum").textContent = c.requests ? `${fmt(c.requests_reused)} of ${fmt(c.requests)} requests reused part of their prompt` : "";
